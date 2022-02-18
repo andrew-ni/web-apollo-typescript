@@ -1,12 +1,11 @@
 import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { currencyClient } from './ExchangeRates';
+import App, { serverClient } from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={currencyClient}>
+    <ApolloProvider client={serverClient}>
       <App />
     </ApolloProvider>
   </React.StrictMode>,
