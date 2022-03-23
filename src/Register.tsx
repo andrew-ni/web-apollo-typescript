@@ -21,14 +21,13 @@ export const Register: React.FC<RegisterProps> = () => {
     useMutation(LOGIN);
 
   const handleClick = () => {
-    const e = emailInput;
-    const p = passwordInput;
-    setEmailInput('');
-    setPasswordInput('');
-
     register({
-      variables: { email: e, password: p },
+      variables: { email: emailInput, password: passwordInput },
     }).then(registerData => {
+      const e = emailInput;
+      const p = passwordInput;
+      setEmailInput('');
+      setPasswordInput('');
       console.log(registerData);
       login({ variables: { email: e, password: p } }).then(loginData =>
         console.log(loginData)

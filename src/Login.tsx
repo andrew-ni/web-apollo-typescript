@@ -19,15 +19,15 @@ export const Login: React.FC<LoginProps> = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
 
   const handleClick = () => {
-    setEmailInput('');
-    setPasswordInput('');
-
     login({ variables: { email: emailInput, password: passwordInput } }).then(
       data => {
+        setEmailInput('');
+        setPasswordInput('');
+
         console.log(data);
-        const { email, userId } = normalizeLoginData(data);
-        setEmail(email);
-        setUserId(userId);
+        const { email: e, userId: u } = normalizeLoginData(data);
+        setEmail(e);
+        setUserId(u);
       }
     );
   };
@@ -42,6 +42,7 @@ export const Login: React.FC<LoginProps> = () => {
         {email} / {userId}
       </p>
       <div>
+        <p>LOGIN</p>
         <input
           ref={emailInputRef}
           type="text"

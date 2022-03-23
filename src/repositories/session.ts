@@ -33,3 +33,20 @@ export const normalizeRegisterData = (response: any) => {
     email: response.data.register.email,
   };
 };
+
+export const ME = gql`
+  query Me {
+    me {
+      user_id
+      email
+    }
+  }
+`;
+
+export const normalizeMeData = (response: any) => {
+  console.log(response);
+  return {
+    userId: response.data.me.userId,
+    email: response.data.me.email,
+  };
+};
